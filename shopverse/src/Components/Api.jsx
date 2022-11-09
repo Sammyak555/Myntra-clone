@@ -11,3 +11,10 @@ export const getdata=({limit,title})=>{
     )
 
 }
+export const productdata=()=>{
+
+    return(
+        axios.get(`http://localhost:8080/clothing?category=Mens`)
+    )
+
+}

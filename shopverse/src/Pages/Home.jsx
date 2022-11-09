@@ -83,10 +83,7 @@ export function Home(){
                 </div></Link>)
                 }
                 </Grid>
-                
-                
-            
-            
+                       
         </div>
     )
 

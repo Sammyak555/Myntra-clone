@@ -13,18 +13,53 @@ export default function Navbar(){
             <img style={{height:"70px"}} src="https://cdn.iconscout.com/icon/free/png-256/myntra-2709168-2249158.png" alt="" />
             </Link>
         <Link to="/men">Men</Link> 
+        <Menu isOpen={isOpen}>
+                <MenuButton onMouseEnter={onOpen} onMouseLeave={onClose}>
+                  <span className="mr-1">
+                    CAREER
+                  </span>
+                </MenuButton>
+                <MenuList className="drop" onMouseEnter={onOpen} onMouseLeave={onClose}>
+                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
+                    
+                  </MenuItem>
+                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
+                    <Link to="/men">
+                      Men
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
+                    <Link to="/men/shirts">
+                      Shirts
+                    </Link>    
+                  </MenuItem>
+                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
+                    <Link to="/men/shirts">
+                      T-Shirts
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
+                    <Link to="/life-at-sirocco">
+                      LIFE AT SIROCCO
+                    </Link>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
         <Link to="/women">Women</Link> 
         <Link to="/kids">Kids</Link> 
         <Link >Home&Living</Link>  
         <Link>Beauty</Link>
         <Box><Input size='md' bg={"white.900"} width="500px"/></Box>
+
+       
           
            <Flex alignItems={'center'}>
              <Stack direction={'row'} spacing={7}>
+
                <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                </Button> 
-               <Menu  >
+               <Menu >
                  <MenuButton
                  onMouseEnter={onOpen}
                  onMouseLeave={onClose}
