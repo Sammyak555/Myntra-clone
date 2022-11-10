@@ -11,10 +11,15 @@ export const getdata=({limit,title})=>{
     )
 
 }
-export const productdata=()=>{
+export const productdata=({limit,title})=>{
 
     return(
-        axios.get(`http://localhost:8080/clothing?category=Mens`)
+        axios.get(`http://localhost:8080/clothing?category=Mens`,{
+            params:{
+                _limit:limit,
+                title:title
+            }
+        })
     )
 
 }
