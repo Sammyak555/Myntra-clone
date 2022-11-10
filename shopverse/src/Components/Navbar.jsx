@@ -13,7 +13,7 @@ export default function Navbar(){
             <img style={{height:"70px"}} src="https://cdn.iconscout.com/icon/free/png-256/myntra-2709168-2249158.png" alt="" />
             </Link>
         <Link to="/men">Men</Link> 
-        <Menu isOpen={isOpen}>
+        <Menu key={"1"} isOpen={isOpen}>
                 <MenuButton onMouseEnter={onOpen} onMouseLeave={onClose}>
                   <span className="mr-1">
                     CAREER
@@ -61,8 +61,6 @@ export default function Navbar(){
                </Button> 
                <Menu >
                  <MenuButton
-                 onMouseEnter={onOpen}
-                 onMouseLeave={onClose}
                    as={Button}
                    rounded={'full'}
                    variant={'link'}
