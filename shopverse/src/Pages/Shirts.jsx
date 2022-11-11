@@ -1,19 +1,18 @@
 
 import { Box, Checkbox, Flex, Grid, GridItem, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { dataforfilter, productdata } from "../Components/Api"
+import {CartContext} from "../CartContext/CartContextProvider"
 
 
  const Shirts=()=>{
 const [data,setData]=useState([])
+const{state,dispatch}=useContext(CartContext)
 const[fildata,setFildata]=useState([])
 const [data1,setData1]=useState("")
-const [srt,setSrt]=useState("")
-const [ord,setOrd]=useState("")
 
-
-const fetchdata=(data1,srt,ord)=>{
+let fetchdata=(data1,srt,ord)=>{
     productdata({
         title:data1||null,
         style:"Shirt",
@@ -46,18 +45,44 @@ function titlechange(elem){
 }
 let order;
 function sorthtl(){
-     let sort="discounted_price"
-      order="desc"
-    setSrt(sort)
-    setOrd(order)
-    fetchdata(srt,ord)
+      fetchdata=(data1)=>{
+        productdata({
+            title:data1||null,
+            style:"Shirt",
+            sort:"discounted_price",
+            order:"desc"
+            
+        })
+        .then((res)=>setData(res.data))
+    }
+    fetchdata()
 }
-console.log(`srt${srt}`)
-function sortlth(srtdata){
-    
+
+function sortlth(){
+    fetchdata=(data1)=>{
+        productdata({
+            title:data1||null,
+            style:"Shirt",
+            sort:"discounted_price",
+            order:"asc"
+            
+        })
+        .then((res)=>setData(res.data))
+    }
+    fetchdata()
 }
-function sortpop(srtdata){
-    
+function sortpop(){
+    fetchdata=(data1)=>{
+        productdata({
+            title:data1||null,
+            style:"Shirt",
+            sort:"rating_count",
+            order:"desc"
+            
+        })
+        .then((res)=>setData(res.data))
+    }
+    fetchdata()
 }
 
 console.log(data)
@@ -105,11 +130,16 @@ console.log(data)
                     <Box bg='orange.300' height={'300px'}>Discount Range</Box>
                 </GridItem>
                 <GridItem pl='2'  area={'main'}>
-                <Grid templateColumns='repeat(5, 1fr)' gap={'0px'} >
+                <Grid templateColumns='repeat(5, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
                 {
                     data.map((item)=>
                     <div key={item.images[0]}>
                         <img src={item.images[0]} alt="" />
+                        <div>
+                        <h1>{item.title}</h1>
+                        <p>{item.subtitle}</p>
+                        <p>Rs:{item.discounted_price}</p>
+                        </div>
                     </div>)
                 }
             </Grid>

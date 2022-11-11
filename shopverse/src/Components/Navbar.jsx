@@ -1,10 +1,14 @@
-import { Avatar, Box, Button, Center, Flex, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Stack, useColorMode, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import { Avatar, Box, Button, Center, Flex, Icon, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Stack, useColorMode, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import  {AiOutlineHeart}  from 'react-icons/ai'
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 export default function Navbar(){
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { state, dispatch } = useContext(AuthContext);
   return(
     <div>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} height="80px" >
@@ -12,11 +16,11 @@ export default function Navbar(){
       <Link to="/">
             <img style={{height:"70px"}} src="https://cdn.iconscout.com/icon/free/png-256/myntra-2709168-2249158.png" alt="" />
             </Link>
-        <Link to="/men">Men</Link> 
-        <Menu key={"1"} isOpen={isOpen}>
+        <Link to="/men">
+        <Menu isOpen={isOpen}>
                 <MenuButton onMouseEnter={onOpen} onMouseLeave={onClose}>
                   <span className="mr-1">
-                    CAREER
+                    Mens
                   </span>
                 </MenuButton>
                 <MenuList className="drop" onMouseEnter={onOpen} onMouseLeave={onClose}>
@@ -45,6 +49,7 @@ export default function Navbar(){
                   </MenuItem>
                 </MenuList>
               </Menu>
+              </Link> 
         <Link to="/women">Women</Link> 
         <Link to="/kids">Kids</Link> 
         <Link >Home&Living</Link>  
@@ -55,7 +60,12 @@ export default function Navbar(){
           
            <Flex alignItems={'center'}>
              <Stack direction={'row'} spacing={7}>
-
+                <Link to="/wishlist">  
+                <Center>
+                <Icon as={AiOutlineHeart} w={6} h={6} />
+                  </Center>
+                <p>Wishlist</p>
+                </Link>
                <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                </Button> 
@@ -72,22 +82,26 @@ export default function Navbar(){
                    />
                  </MenuButton>
                  <MenuList alignItems={'center'}>
-                   <br />
+                 {!state.isAuth&&<>
+                  <Center>
+                    <h2>Welcome</h2>
+                  </Center>
+                    
                    <Center>
-                     <Avatar
-                       size={'2xl'}
-                       src={'https://avatars.dicebear.com/api/male/username.svg'}
-                     />
-                   </Center>
-                   <br />
-                   <Center>
-                     <p>Username</p>
-                   </Center>
-                   <br />
+                    <p>To access account and manage orders</p>
+                  </Center>
+                  <br />                      
+                    <Center>
+                     <Button>
+                      <Link to={'/login'}>Login/SignUp</Link>
+                     </Button>
+                   </Center><br /></>
+                   }
+
                    <MenuDivider />
                   <MenuItem>Your Servers</MenuItem>
                    <MenuItem>Account Settings</MenuItem>
-                   <MenuItem>Logout</MenuItem>
+                  {state.isAuth&&<MenuItem>Logout</MenuItem>}
                  </MenuList>
                </Menu>
           </Stack>  

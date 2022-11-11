@@ -1,5 +1,5 @@
 import { Grid } from "@chakra-ui/react"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getdata } from "../Components/Api"
@@ -10,6 +10,7 @@ export function Home(){
     const [data2,setData2]=useState([])
     const [data3,setData3]=useState([])
     const [data4,setData4]=useState([])
+    
 
     useEffect(()=>{
         getdata({
