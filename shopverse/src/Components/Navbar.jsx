@@ -2,6 +2,7 @@ import { Avatar, Box, Button, Center, Flex, Icon, Input, Menu, MenuButton, MenuD
 import { Link } from "react-router-dom";
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import  {AiOutlineHeart}  from 'react-icons/ai'
+import  {BsHandbag}  from 'react-icons/bs'
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 
@@ -66,6 +67,15 @@ export default function Navbar(){
                   </Center>
                 <p>Wishlist</p>
                 </Link>
+
+                <Link to="/bag">  
+                <Center>
+                <Icon as={BsHandbag} w={6} h={6} />
+                  </Center>
+                <p>bag</p>
+                </Link>
+
+                {/*  */}
                <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                </Button> 

@@ -7,6 +7,14 @@ import {CartContext} from "../CartContext/CartContextProvider"
 import { addtocart } from "../CartContext/action";
 
 
+const itemalreadyexist=(id,cartitems)=>{
+    if(cartitems.find((item)=>item.id===id)){
+      return true
+    }else{
+      return false
+    }
+  }
+
  const Shirts=()=>{
 const [data,setData]=useState([])
 const{state,dispatch}=useContext(CartContext)
@@ -86,7 +94,7 @@ function sortpop(){
     fetchdata()
 }
 
-console.log(state)
+console.log(data)
 
     return(
         <div>
@@ -120,7 +128,7 @@ console.log(state)
                         <Stack spacing={[1, 5]} direction={['column']}>
                         {
                             fildata.map((el)=>
-                            <Checkbox onChange={()=>titlechange(el.title)} value={el.title}>{el.title}</Checkbox>
+                            <Checkbox key={el.id} onChange={()=>titlechange(el.title)} value={el.title}>{el.title}</Checkbox>
                             )
                         }
                         </Stack>
@@ -134,7 +142,7 @@ console.log(state)
                 <Grid templateColumns='repeat(5, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
                 {
                     data.map((item)=>
-                    <div key={item.images[0]}>
+                    <div key={item.id}>
                         <img src={item.images[0]} alt="" />
                         <div>
                         <h1>{item.title}</h1>
@@ -144,7 +152,7 @@ console.log(state)
                         <Button
                         colorScheme="grey"
                         variant="outline"
-                        // disabled={itemalreadyexist(item.id,state)}
+                        disabled={itemalreadyexist(item.id,state)}
                         onClick={()=>dispatch(addtocart(item))}
                         >Add Wishlist</Button>
                     </div>)
