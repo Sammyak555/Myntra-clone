@@ -1,9 +1,10 @@
 
-import { Box, Checkbox, Flex, Grid, GridItem, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
+import { Box, Button, Checkbox, Flex, Grid, GridItem, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
 import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { dataforfilter, productdata } from "../Components/Api"
 import {CartContext} from "../CartContext/CartContextProvider"
+import { addtocart } from "../CartContext/action";
 
 
  const Shirts=()=>{
@@ -85,7 +86,7 @@ function sortpop(){
     fetchdata()
 }
 
-console.log(data)
+console.log(state)
 
     return(
         <div>
@@ -140,6 +141,12 @@ console.log(data)
                         <p>{item.subtitle}</p>
                         <p>Rs:{item.discounted_price}</p>
                         </div>
+                        <Button
+                        colorScheme="grey"
+                        variant="outline"
+                        // disabled={itemalreadyexist(item.id,state)}
+                        onClick={()=>dispatch(addtocart(item))}
+                        >Add Wishlist</Button>
                     </div>)
                 }
             </Grid>
