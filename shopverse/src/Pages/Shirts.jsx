@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { dataforfilter, productdata } from "../Components/Api"
 import {CartContext} from "../CartContext/CartContextProvider"
-import { addtocart } from "../CartContext/action";
+import { addtowish } from "../CartContext/action";
 
 
 const itemalreadyexist=(id,cartitems)=>{
@@ -94,7 +94,7 @@ function sortpop(){
     fetchdata()
 }
 
-console.log(data)
+
 
     return(
         <div>
@@ -109,21 +109,22 @@ console.log(data)
                 color='blackAlpha.700'
                 fontWeight='bold'
 >
-                <GridItem bg='orange.300' area={'header'} justifyContent="center" style={{border:"1px solid grey"}} >
+                <GridItem  area={'header'}  style={{ border:"1px solid grey",marginTop:"10px",marginRight:"80px"}} >
                    
                 <Menu isLazy>
-            <MenuButton>sort by: </MenuButton>
+           {/* sort by:  */}
+           <MenuButton><Box  width='260px' >Sort by :{order}</Box></MenuButton>
                 <MenuList>
            <MenuItem onClick={()=>sorthtl()} value='htl'>High to low</MenuItem>
            <MenuItem onClick={()=>sortlth()} value='lth'>Low to high</MenuItem>
            <MenuItem onClick={()=>sortpop()} value="Pop">Popularity</MenuItem>
          </MenuList>
          </Menu>     
-                        <Box bg={'grey'} width='260px' >Sort by :{order}</Box>
+         
                     
                 </GridItem>
-                <GridItem pl='2' bg='pink.300' area={'nav'}>
-                    <Box bg='teal.300' height={'300px'} overflow="scroll" >
+                <GridItem pl='2'  area={'nav'}>
+                    <Box  height={'300px'} overflow="scroll" >
                         Brand
                         <Stack spacing={[1, 5]} direction={['column']}>
                         {
@@ -134,9 +135,9 @@ console.log(data)
                         </Stack>
                         
                         </Box>
-                    <Box bg='red.300'height={'300px'}>Price</Box>
-                    <Box bg='blue.300' height={'300px'}>Color</Box>
-                    <Box bg='orange.300' height={'300px'}>Discount Range</Box>
+                    <Box  height={'300px'}>Price</Box>
+                    <Box  height={'300px'}>Color</Box>
+                    <Box  height={'300px'}>Discount Range</Box>
                 </GridItem>
                 <GridItem pl='2'  area={'main'}>
                 <Grid templateColumns='repeat(5, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
@@ -153,7 +154,7 @@ console.log(data)
                         colorScheme="grey"
                         variant="outline"
                         disabled={itemalreadyexist(item.id,state)}
-                        onClick={()=>dispatch(addtocart(item))}
+                        onClick={()=>dispatch(addtowish(item))}
                         >Add Wishlist</Button>
                     </div>)
                 }

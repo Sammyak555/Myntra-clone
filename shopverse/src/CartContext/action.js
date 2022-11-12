@@ -1,12 +1,8 @@
-export const addtocart=(data)=>({
+export const addtowish=(data)=>({
     type:"ADD-TO-CART",
     payload:data
 })
-export const removecart=(id)=>({
+export const removewish=(id)=>({
     type:"REMOVE_FROM_CART",
     payload:id
-})
-export const checkout=()=>({
-    type:"CHECKOUT"
-    
 })

@@ -38,7 +38,7 @@ export function Home(){
     console.log(data1)
     return(
         <div>
-            <h1>DEAL OF THE DAY</h1>
+            <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/11/11/11c16415-1196-4bac-a667-ed7286a00e0f1668143055672-OMG-Deals--1-.jpg" alt="" />
                 <Grid templateColumns='repeat(8, 1fr)' gap={'0px'} >
                 {
                     data.map((item)=>
@@ -48,7 +48,7 @@ export function Home(){
                 }
                 </Grid>
                 
-                <h1>Best of Myntra</h1>
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/11/11/de3859bd-ed72-4d90-9a93-70dd191dd5a51668144694278-Brands-Everyone---s-Crushing-On-.jpg" alt="" />
                 <Grid templateColumns='repeat(8, 1fr)' gap={'0px'} >
                 {
                     data1.map((item)=>
@@ -57,7 +57,7 @@ export function Home(){
                 </div></Link>)
                 }
                 </Grid>
-                <h1>CATEGORIES TO BAG</h1>
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/11/11/49039744-a61e-4220-a40a-e791ce77844f1668142162387-Shop-By-Category--1-.jpg" alt="" />
                 <Grid templateColumns='repeat(8, 1fr)' gap={'0px'} >
                 {
                     data3.map((item)=>
@@ -66,7 +66,7 @@ export function Home(){
                 </div></Link>)
                 }
                 </Grid>
-                <h1>Top Picks</h1>
+                <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/11/11/db79460f-8020-49e8-8528-189507bce7a21668143245506-Budget-Buys--2-.jpg" alt="" />
                 <Grid templateColumns='repeat(7, 1fr)' gap={'0px'} >
                 {
                     data2.map((item)=>

@@ -15,7 +15,7 @@ export default function Navbar(){
       <Box bg={useColorModeValue('gray.100', 'gray.900')} height="80px" >
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
       <Link to="/">
-            <img style={{height:"70px"}} src="https://cdn.iconscout.com/icon/free/png-256/myntra-2709168-2249158.png" alt="" />
+            <img style={{height:"70px",marginLeft:"50px"}} src="https://cdn.iconscout.com/icon/free/png-256/myntra-2709168-2249158.png" alt="" />
             </Link>
         <Link to="/men">
         <Menu isOpen={isOpen}>
@@ -28,11 +28,7 @@ export default function Navbar(){
                   <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
                     
                   </MenuItem>
-                  <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
-                    <Link to="/men">
-                      Men
-                    </Link>
-                  </MenuItem>
+                  
                   <MenuItem className="menu_item hover:opacity-60 hover:text-black ">
                     <Link to="/men/shirts">
                       Shirts
@@ -55,7 +51,7 @@ export default function Navbar(){
         <Link to="/kids">Kids</Link> 
         <Link >Home&Living</Link>  
         <Link>Beauty</Link>
-        <Box><Input size='md' bg={"white.900"} width="500px"/></Box>
+        <Box><Input size='md' bg={"white.900"} width="500px" placeholder="Search for Products, Brands and Many more"/></Box>
 
        
           
@@ -68,7 +64,7 @@ export default function Navbar(){
                 <p>Wishlist</p>
                 </Link>
 
-                <Link to="/bag">  
+                <Link to="/cart">  
                 <Center>
                 <Icon as={BsHandbag} w={6} h={6} />
                   </Center>

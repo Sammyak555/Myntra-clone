@@ -7,18 +7,23 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import  AuthContextProvider  from './AuthContext/AuthContextProvider';
 import CartContextProvider from './CartContext/CartContextProvider';
+import CheckoutContextProvider from './CkeckoutContext/CheckoutContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ChakraProvider>
+    <BrowserRouter>
       <AuthContextProvider>
         <CartContextProvider>
-      <BrowserRouter>
+          <CheckoutContextProvider>
+      
       <App />
-      </BrowserRouter>
+      
+      </CheckoutContextProvider>
       </CartContextProvider>
       </AuthContextProvider>
+      </BrowserRouter>
     </ChakraProvider>
     
   </React.StrictMode>
