@@ -81,7 +81,7 @@ const Address=()=>{
                       // stripeKey={STRIPE_KEY}
                       // token={checkout}
                       name="Checkout"
-                      amount={total}
+                      amount={total*100}
                       
                       currency="INR"
                       // email={userState?.email}
