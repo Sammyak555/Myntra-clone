@@ -9,7 +9,7 @@ import { Link, Navigate } from "react-router-dom";
 import { loginFailure, loginSuccess } from "../AuthContext/action";
 export default function Login() {
   const { state, dispatch } = useContext(AuthContext);
-    
+
   const [userData, setUserData] = useState({
     email: "",
     password: ""
@@ -40,7 +40,7 @@ export default function Login() {
   if (state.isAuth) {
     return <Navigate to="/" />;
   }
-
+console.log(userData)
 
   if(state.isError){
     return(

@@ -89,12 +89,12 @@ import { useEffect } from "react"
                                                 <img style={{width:"110px", height:"140px" }} src={item.images[0]} alt="" />
                                             </div>
                                             <div>
-                                                <h1 style={{marginLeft:"10px",marginTop:"20px"}}>{item.title}</h1>
+                                                <h1 style={{marginLeft:"10px",marginTop:"20px",color:"black",fontWeight:"500"}}>{item.title}</h1>
                                                 <p style={{marginLeft:"10px"}}>{item.subtitle}</p>
                                                 <div style={{display:"flex",justifyContent:"space-between",marginTop:"20px",marginLeft:"10px"}}>
-                                                    <p>₹{item.discounted_price}</p>
-                                                    <p style={{textDecoration:"line-through"}}>₹{item.strike_price}</p>
-                                                    <p style={{color:"green", fontWeight:"500"}}>{item.discount}</p>
+                                                    <p style={{color:"#0C0B0B",fontWeight:"500"}}>₹{item.discounted_price}</p>
+                                                    <p style={{textDecoration:"line-through",marginLeft:"10px"}}>₹{item.strike_price}</p>
+                                                    <p style={{color:"green", fontWeight:"500",marginLeft:"10px"}}>{item.discount}</p>
                                                 </div>
                                             </div>
                                             <div style={{position: "absolute",right:"20px",marginTop:"20px"}}>
@@ -172,7 +172,7 @@ import { useEffect } from "react"
 
             </Center>
         <Center>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex",marginTop:"50px"}}>
                 <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png" alt="" />
                 <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png" alt="" />
                 <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png" alt="" />

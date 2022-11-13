@@ -1,11 +1,11 @@
 
-import { Box, Button, Checkbox, Flex, Grid, GridItem, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
+import { Box, Button, Checkbox, Flex, Grid, GridItem, Icon, Menu, MenuButton, MenuItem, MenuList, Stack } from "@chakra-ui/react"
 import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { dataforfilter, productdata } from "../Components/Api"
 import {CartContext} from "../CartContext/CartContextProvider"
 import { addtowish } from "../CartContext/action";
-
+import  {AiOutlineHeart}  from 'react-icons/ai'
 
 const itemalreadyexist=(id,cartitems)=>{
     if(cartitems.find((item)=>item.id===id)){
@@ -21,12 +21,14 @@ const{state,dispatch}=useContext(CartContext)
 const[fildata,setFildata]=useState([])
 const [data1,setData1]=useState("")
 
+
 let fetchdata=(data1,srt,ord)=>{
     productdata({
         title:data1||null,
         style:"Shirt",
         sort:srt||null,
         order:ord||null
+        
         
     })
     .then((res)=>setData(res.data))
@@ -39,6 +41,7 @@ useEffect(()=>{
         style:"Shirt",
         sort:null,
         order:null
+       
     }
      )
      .then((res)=>setFildata(res.data))
@@ -136,26 +139,31 @@ function sortpop(){
                         
                         </Box>
                     <Box  height={'300px'}>Price</Box>
-                    <Box  height={'300px'}>Color</Box>
-                    <Box  height={'300px'}>Discount Range</Box>
+                    {/* <Box  height={'300px'}>Color</Box>
+                    <Box  height={'300px'}>Discount Range</Box> */}
                 </GridItem>
                 <GridItem pl='2'  area={'main'}>
-                <Grid templateColumns='repeat(5, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
+                <Grid templateColumns='repeat(4, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
                 {
                     data.map((item)=>
-                    <div key={item.id}>
+                    <div key={item.id} style={{width:""}}>
                         <img src={item.images[0]} alt="" />
                         <div>
-                        <h1>{item.title}</h1>
+                        <h1 style={{color:"black"}}>{item.title}</h1>
                         <p>{item.subtitle}</p>
-                        <p>Rs:{item.discounted_price}</p>
+                        <div style={{display:"flex",fontWeight:"500"}}>
+                        <p style={{color:"#0C0B0B"}}>Rs:{item.discounted_price}</p>
+                        <p style={{marginLeft:"10px",fontWeight:"400",textDecoration:"line-through"}}>Rs:{item.strike_price}</p>
+                        <p style={{marginLeft:"10px",fontWeight:"600",color:"green"}}>Rs:{item.discount}</p>
+                        </div>
                         </div>
                         <Button
+                        style={{width:"65%",borderRadius:"0"}}
                         colorScheme="grey"
                         variant="outline"
                         disabled={itemalreadyexist(item.id,state)}
                         onClick={()=>dispatch(addtowish(item))}
-                        >Add Wishlist</Button>
+                        ><Icon as={AiOutlineHeart} w={6} h={6} />Wishlist</Button>
                     </div>)
                 }
             </Grid>

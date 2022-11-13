@@ -11,7 +11,7 @@ export const getdata=({limit,title})=>{
     )
 
 }
-export const productdata=({limit,title,style,sort,order})=>{
+export const productdata=({title,style,sort,order})=>{
 
     return(
         axios.get(`http://localhost:8080/clothing?category=Mens`,{
