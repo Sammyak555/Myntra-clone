@@ -5,7 +5,7 @@ import { Alert, AlertIcon, Box, Button, Center, Container, Grid, Heading, Icon, 
 import { CartContext } from "../CartContext/CartContextProvider"
 import  {CiDiscount1}  from 'react-icons/ci'
 import StripeCheckout from "react-stripe-checkout";
-//  import { STRIPE_KEY,razorpayHandler  } from "../Components/Config";
+
 
 
 const Address=()=>{
@@ -50,7 +50,7 @@ const Address=()=>{
                     </div>
                 </div>
                 </div>
-                <div style={{border:"1px solid red"}}>
+                <div >
                   <h1 style={{fontWeight:"500"}} >CHOOSE PAYMENT METHOD</h1>
 
 
@@ -93,18 +93,6 @@ const Address=()=>{
           </Grid>
 
           
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={4}
-            lg={4}
-            xl={4}
-            // className={classes.second}
-          >
-            {/* <OrderTile /> */}
-          </Grid>
-          {/* )} */}
         </Grid>
       
 
@@ -112,8 +100,8 @@ const Address=()=>{
 
                 </div>
                            </div>
-            <div style={{border:"1px solid red",width:"370px",height:"500px"}}>
-                <div style={{border:"1px solid red",width:"350px",height:"460px",margin:"auto",marginTop:"20px"}}>
+            <div style={{border:"1px dotted grey",borderRight:"0",borderTop:"0",borderBottom:"0",width:"370px",height:"500px"}}>
+                <div style={{width:"350px",height:"460px",margin:"auto",marginTop:"20px"}}>
                 <br />
                 
                 <div></div>
@@ -168,7 +156,7 @@ const Address=()=>{
 
     </Center>
 <Center>
-    <div style={{display:"flex"}}>
+    <div style={{display:"flex",marginBottom:"100px"}}>
         <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-bhim.png" alt="" />
         <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-ssl.png" alt="" />
         <img src="https://constant.myntassets.com/checkout/assets/img/footer-bank-visa.png" alt="" />
