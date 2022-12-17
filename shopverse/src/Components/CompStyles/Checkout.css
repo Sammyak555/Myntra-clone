@@ -1,0 +1,221 @@
+
+.Checkout{
+    margin: auto;
+    width: 80%;
+    
+}
+.fake{
+    width: 100%;
+    height: 110px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(164, 162, 162);
+    
+}
+.navdetail{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.navdetail>h1{
+    margin-bottom: 20px;
+    /* font-family: sans-serif; */
+    font-weight: 600;
+    color: grey;
+}
+.navdetail>img{
+    width: 107px;
+}
+.Allbody{
+    display: flex;
+    gap: 25px;
+}
+.leftside{
+    display: block;
+    
+}
+.AddressBoxbig{
+    border: 1px solid grey;
+    width: 850px;
+    height: fit-content;
+    margin-bottom: 15px; 
+    display: flex;
+}
+
+.AddressBoxsmall{
+    border: 1px solid grey;
+    width: 850px;
+    height: fit-content;
+    margin-bottom: 15px;  
+    
+}
+.addresscard{
+    width: 300px;
+    border: 1px solid red;
+}
+.delivery{
+    border: 1px solid grey;
+    width: 850px;
+    height: fit-content;
+    margin-bottom: 15px;
+}
+.paymentbox{
+ 
+    width: 850px;
+    height: fit-content;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(253, 247, 238);
+}
+
+ @media only screen and (max-width: 1200px) {
+.Checkout{
+    margin: auto;
+    width: 80%;
+}
+.fake{
+    width: 100%;
+    height: 110px;
+    margin-bottom: 20px;
+}
+.Allbody{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(1,1fr);
+    gap: 25px;
+    grid-template-areas: 
+            "b "
+            "a "
+            ;
+}
+.Allbody>div:nth-child(1){
+    grid-area: a;
+}
+.Allbody>div:nth-child(2){
+    grid-area: b;
+}
+.AddressBox{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    display: block;
+
+}
+.delivery{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;
+    
+}
+.payment{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;
+}
+.paymentbox{
+ 
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background-color: rgb(253, 247, 238);
+}
+.AddressBoxbig{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px; 
+    display: block;
+}
+.AddressBoxsmall{
+    border: 1px solid grey;
+    width: 650px;
+    height: fit-content;
+    margin-bottom: 15px;  
+}
+.addresscard{
+    width: 100px;
+    border: 1px solid grey;
+}
+
+}
+
+@media only screen and (max-width: 420px) {
+    .Allbody{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: repeat(1,1fr);
+        gap: 25px;
+        grid-template-areas: 
+                "b "
+                "a "
+                ;
+    }
+    .Allbody>div:nth-child(1){
+        grid-area: a;
+    }
+    .Allbody>div:nth-child(2){
+        grid-area: b;
+    }
+    .Checkout{
+        margin: auto;
+        width: 80%;
+    }
+    .fake{
+        width: 100%;
+        height: 110px;
+        margin-bottom: 20px;
+    }
+    
+    .AddressBox{
+        border: 1px solid grey;
+        width: 340px;
+        height: fit-content;
+        display: block;
+    
+    }
+    
+    .payment{
+        border: 1px solid grey;
+        width: 340px;
+        height: fit-content;
+        margin-bottom: 15px;
+    }
+    .paymentbox{
+     
+        width: 340px;
+        height: fit-content;
+        margin-bottom: 15px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        background-color: rgb(253, 247, 238);
+    }
+    .AddressBoxbig{
+        border: 1px solid grey;
+        width: 340px;
+        height: fit-content;
+        margin-bottom: 15px; 
+        display: block;
+        overflow: scroll;
+    }
+    .AddressBoxsmall{
+        border: 1px solid grey;
+        width: 340px;
+        height: fit-content;
+        margin-bottom: 15px; 
+        display: block; 
+    }
+    .addresscard{
+        width: 100px;
+        border: 1px solid grey;
+    }
+    .leftside{
+        display: block;
+    }
+    
+}

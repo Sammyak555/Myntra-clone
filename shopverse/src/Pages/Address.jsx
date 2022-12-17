@@ -4,11 +4,12 @@ import { Alert, AlertIcon, Box, Button, Center, Container, Grid, Heading, Icon, 
 
 import { CartContext } from "../CartContext/CartContextProvider"
 import  {CiDiscount1}  from 'react-icons/ci'
-import StripeCheckout from "react-stripe-checkout";
+
 
 
 
 const Address=()=>{
+  
 
     const{state2,dispatch2}=useContext(CheckoutContext)
     const{state,dispatch}=useContext(CartContext)
@@ -54,46 +55,35 @@ const Address=()=>{
                   <h1 style={{fontWeight:"500"}} >CHOOSE PAYMENT METHOD</h1>
 
 
-                  <Grid >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={8}
-            lg={8}
-            xl={8}
-            
-          >
-           
-            {(
-              <div >
-                <img style={{width:"150px",height:"170px"}}
-                  src="https://github.com/kr017/MyntraUI/blob/main/src/images/StripeLogo.png?raw=true"
-                  alt="StripeLogo"
-                 
-                />
+                  {/* <div className='leftside'>
+                    <div className={style||ns} onClick={changeStyle}>
+                        {/* <div className='addresscard'>
+                            
+                        </div> */}
 
-                <div style={{ margin: "8px" }}>
-                  To Pay with Stripe add <b>4242 4242 4242 4242</b> as card
-                  number with any future date as expiry and any 3digits as CVC.
-                  <div style={{ marginTop: "4px" }}>
-                    <StripeCheckout
-                      // stripeKey={STRIPE_KEY}
-                      // token={checkout}
-                      name="Checkout"
-                      amount={total*100}
-                      
-                      currency="INR"
-                      // email={userState?.email}
-                    ></StripeCheckout>
-                  </div>
-                </div>
-              </div>
-            )}
-          </Grid>
+                    {/*  <Wrap justify='space-between'>
+                            {
+                                style === "AddressBoxbig" &&
+                                <WrapItem>
+                                    <Center >
+                                        {
+                                            AllAddress.length>0 &&
+                                            AllAddress.map((item) => {
+                                                return (<AddressCard key={item.id} cardclick={cardclick} {...item} setStyle={setStyle} />)
+                                            })
+                                        }
+                                    </Center>
+                                </WrapItem>
+                            }
+                            <WrapItem justifyContent={'center'}>
+                                <Center >
+                                    <AddressForm />
+                                </Center>
+                            </WrapItem>
 
-          
-        </Grid>
+                        </Wrap>
+                    </div>
+                    </div> */}
       
 
 

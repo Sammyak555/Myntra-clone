@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { getdata } from "../Components/Api"
+import home from "../Styles/home.css"
 
 export function Home(){
     const [data,setData]=useState([])
@@ -75,7 +76,7 @@ export function Home(){
                 </div></Link>)
                 }
                 </Grid>
-                <h1>GIFTING CARDS</h1>
+                <h1 className="heading">GIFTING CARDS</h1>
                 <Grid templateColumns='repeat(4, 1fr)' gap={'0px'} >
                 {
                     data4.map((item)=>
