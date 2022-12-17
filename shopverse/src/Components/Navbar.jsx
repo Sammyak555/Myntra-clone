@@ -4,21 +4,22 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import  {AiOutlineHeart}  from 'react-icons/ai'
 import  {RiAdminFill}  from 'react-icons/ri'
 import  {BsHandbag}  from 'react-icons/bs'
-import { useContext } from "react";
-import { AuthContext } from "../AuthContext/AuthContextProvider";
-import { loginFailure, loginLoading } from "../AuthContext/action";
+
 
 import {
   Topwear, indian_festive, bottomwear,
   Innerwear_Sleepwear, Footwear,
   Sports_Active_Wear, Gadgets, Fashion_Accessories,
 } from '../Components/Navsub'
+import { useDispatch, useSelector } from "react-redux";
+import { getloginreq } from "../Redux/Auth/action";
 
 export default function Navbar(){
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { state, dispatch } = useContext(AuthContext);
-  console.log(state.token)
+  const dispatch=useDispatch();
+  const loggeddata=useSelector((store)=>store.auth)
+
   return(
     <div>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} height="80px" >
@@ -121,7 +122,7 @@ export default function Navbar(){
                    <p >Profile</p>
                  </MenuButton>
                  <MenuList alignItems={'center'}>
-                 {!state.isAuth&&<>
+                 {!loggeddata.isAuth&&<>
                   <Center>
                     <h2>Welcome</h2>
                   </Center>
@@ -137,7 +138,7 @@ export default function Navbar(){
                    </Center><br /></>
                    }
                    {
-                    state.isAuth&&<>
+                    loggeddata.isAuth&&<>
                     <Center>
                     <h2>Welcome</h2>
                   </Center>
@@ -158,7 +159,7 @@ export default function Navbar(){
                    <MenuDivider />
                   <MenuItem>Your Servers</MenuItem>
                    <MenuItem>Account Settings</MenuItem>
-                  {state.isAuth&&<Button bg={"none"} onClick={()=>dispatch(loginLoading())}><MenuItem>Logout</MenuItem></Button>}
+                  {loggeddata.isAuth&&<Button bg={"none"} onClick={()=>dispatch(getloginreq())}><MenuItem>Logout</MenuItem></Button>}
                  </MenuList>
                </Menu>
           </Stack>  

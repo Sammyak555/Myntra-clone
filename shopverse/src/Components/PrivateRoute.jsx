@@ -1,10 +1,9 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext/AuthContextProvider";
 
 const PrivateRoute = ({children}) => {
-    const {state}=useContext(AuthContext)
-    if(!state.isAuth){
+  const loggedData=useSelector((store)=>store.auth)
+    if(!loggedData.isAuth){
         alert("Please Login First!")
       return(<Navigate to="/login" />)
     }else{
