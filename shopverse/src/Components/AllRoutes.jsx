@@ -7,6 +7,7 @@ import  Shirts  from "../Pages/Shirts";
 import {Wishlist} from "../Pages/Wishlist";
 import PrivateRoute from "./PrivateRoute";
 import Address from "../Pages/Address"
+import Women from "../Pages/Women";
 
 
 export function AllRoutes(){
@@ -18,7 +19,7 @@ export function AllRoutes(){
             <Route path="/about" element={<About/>}/>
             <Route path="/men" element="Men"/>
             <Route path="/men/shirts" element={<Shirts/>}/>
-            <Route path="/women" element={<Home/>}/>
+            <Route path="/women" element={<Women />}/>
             <Route path="/kids" element={<Home/>}/>
             <Route path="/wishlist" element={<PrivateRoute><Wishlist/></PrivateRoute>}/>
             <Route path="/login" element={<Login/>}/>

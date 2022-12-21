@@ -41,3 +41,13 @@ export const dataforfilter=({title,style,sort,order})=>{
     )
 
 }
+
+export const getwomendata=(data,setData,params)=>{
+    return axios.get(`https://myntra-db-server.onrender.com/clothing?category=Womens`,params)
+    .then((r)=>{
+        setData(r.data)
+    })
+    .catch((e)=>{
+        console.log(e)
+    })
+}

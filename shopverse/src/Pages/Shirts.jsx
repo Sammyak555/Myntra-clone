@@ -28,8 +28,6 @@ let fetchdata=(data1,srt,ord)=>{
         style:"Shirt",
         sort:srt||null,
         order:ord||null
-        
-        
     })
     .then((res)=>setData(res.data))
 }
@@ -161,7 +159,7 @@ function sortpop(){
                         style={{width:"65%",borderRadius:"0"}}
                         colorScheme="grey"
                         variant="outline"
-                        disabled={itemalreadyexist(item.id,state)}
+                        disabled={itemalreadyexist(item,state)}
                         onClick={()=>dispatch(addtowish(item))}
                         ><Icon as={AiOutlineHeart} w={6} h={6} />Wishlist</Button>
                     </div>)
