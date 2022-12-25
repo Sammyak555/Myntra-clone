@@ -15,11 +15,11 @@ const itemalreadyexist=(discounted_price,strike_price,cartitems)=>{
 
 const Clothcard = (item) => {
     const{state,dispatch}=useContext(CartContext)
-    console.log(state)
+    // console.log(state)
   return (
     <div className='card'>
         <div key={item.id} style={{width:""}}>
-                        <img src={item.images} alt="" />
+                        <img src={item.images[0]} alt="" />
                         <div>
                         <h1 style={{color:"black"}}>{item.title}</h1>
                         <p>{item.subtitle}</p>

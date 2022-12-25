@@ -1,13 +1,15 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, TagLabel, useDisclosure } from '@chakra-ui/react';
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "../../Pages/Checkout/Styles/payment.css"
 import Pin from '../../Components/CheckoutComps/Pin'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { CheckoutContext } from '../../CkeckoutContext/CheckoutContextProvider';
 
 
 const Payment = () => {
+  const{state2,dispatch2}=useContext(CheckoutContext)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [pininput, setPininput] = useState("")
   const [verify, setVerify] = useState(true)
@@ -16,17 +18,18 @@ const Payment = () => {
   const [divchange, setDivchange] = useState("Nbank")
   const [success, setSuccess] = useState("")
   const [note, setNote] = useState("")
-  const cartData=useSelector((store)=>store.cart.cartData)
+
   const navigate=useNavigate()
   // console.log(cartData)
   let totalmrp=0;
-    let discount=0;
-    let total=0
-    for(let i=0;i<cartData.length;i++){
-        totalmrp+=Number(Math.floor(cartData[i].price))
-        discount+=Number(((Math.round(cartData[i].price))*.1))
-    }
-    total+=Number(totalmrp-Math.round(discount))
+  let discount=0;
+  let total=0
+  for(let i=0;i<state2.length;i++){
+      totalmrp+=Number(state2[i].strike_price)
+      discount+=Number(state2[i].strike_price-state2[i].discounted_price)
+      total+=Number(state2[i].discounted_price)
+  }
+
 
     const handlesuccess=()=>{
       navigate('/')

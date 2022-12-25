@@ -1,18 +1,54 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import {CheckoutContext} from "../CkeckoutContext/CheckoutContextProvider"
 import { Alert, AlertIcon, Box, Button, Center, Container, Grid, Heading, Icon, Link, Stack, StackDivider, Table, TableCaption, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr, VStack } from "@chakra-ui/react"
 
-import { CartContext } from "../CartContext/CartContextProvider"
 import  {CiDiscount1}  from 'react-icons/ci'
+import { useDispatch, useSelector } from "react-redux"
+import { getAdd } from "../Redux/Checkout/action"
+import { Wrap, WrapItem } from '@chakra-ui/react'
+
+import AddressForm from '../Components/CheckoutComps/AddressForm'
+import "../Pages/Checkout/Checkout.css"
+import AddressCard from '../Components/CheckoutComps/AddressCard'
+import Payment from '../Components/CheckoutComps/Payment'
+
 
 
 
 
 const Address=()=>{
-  
+  const dispatch = useDispatch()
+  const{state2,dispatch2}=useContext(CheckoutContext)
+    const AllAddress = useSelector((store) => store.checkout.AllAddress)
+    const [style, setStyle] = useState("AddressBoxsmall");
+    const [ns, setNs] = useState("")
 
-    const{state2,dispatch2}=useContext(CheckoutContext)
-    const{state,dispatch}=useContext(CartContext)
+    console.log(AllAddress)
+    useEffect(() => {
+        dispatch(getAdd)
+        changeStyle()
+    }, [])
+    const changeStyle = () => {
+
+      if(AllAddress.length>0){
+          setStyle("AddressBoxbig");
+      }
+  };
+console.log(style)
+  const cardclick = (id) => {
+      setNs("AddressBoxsmall");
+      console.log("hi")
+  }
+  
+  useEffect(() => {
+      if (ns !== "") {
+          setStyle()
+      } else {
+          setStyle("AddressBoxsmall")
+      }
+  }, [ns])
+    
+    
     console.log(state2)
 
     
@@ -84,7 +120,39 @@ const Address=()=>{
                         </Wrap>
                     </div>
                     </div> */}
-      
+                  <div className='leftside'>
+                    <div className={style||ns} onClick={changeStyle}>
+                        {/* <div className='addresscard'>
+                            
+                        </div> */}
+
+                        <Wrap justify='space-between'>
+                            {
+                                style === "AddressBoxbig" &&
+                                <WrapItem>
+                                    <Center >
+                                        {
+                                            AllAddress.length>0 &&
+                                            AllAddress.map((item) => {
+                                                return (<AddressCard key={item.id} cardclick={cardclick} {...item} setStyle={setStyle} />)
+                                            })
+                                        }
+                                    </Center>
+                                </WrapItem>
+                            }
+                            <WrapItem justifyContent={'center'}>
+                                <Center >
+                                    <AddressForm />
+                                </Center>
+                            </WrapItem>
+
+                        </Wrap>
+                    </div>
+                    
+                    <div className="paymentbox" >
+                        <Payment />
+                    </div>
+                </div>
 
 
 

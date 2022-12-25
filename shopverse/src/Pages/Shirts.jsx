@@ -3,176 +3,116 @@ import { Box, Button, Checkbox, Flex, Grid, GridItem, Icon, Menu, MenuButton, Me
 import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { dataforfilter, productdata } from "../Components/Api"
-import {CartContext} from "../CartContext/CartContextProvider"
-import { addtowish } from "../CartContext/action";
-import  {AiOutlineHeart}  from 'react-icons/ai'
+import { CartContext } from "../CartContext/CartContextProvider"
 
-const itemalreadyexist=(id,cartitems)=>{
-    if(cartitems.find((item)=>item.id===id)){
-      return true
-    }else{
-      return false
+import '../Styles/Shirts.css'
+import Clothcard from "../Components/Clothcard"
+import { useSearchParams } from "react-router-dom"
+
+const itemalreadyexist = (id, cartitems) => {
+    if (cartitems.find((item) => item.id === id)) {
+        return true
+    } else {
+        return false
     }
-  }
-
- const Shirts=()=>{
-const [data,setData]=useState([])
-const{state,dispatch}=useContext(CartContext)
-const[fildata,setFildata]=useState([])
-const [data1,setData1]=useState("")
-
-
-let fetchdata=(data1,srt,ord)=>{
-    productdata({
-        title:data1||null,
-        style:"Shirt",
-        sort:srt||null,
-        order:ord||null
-    })
-    .then((res)=>setData(res.data))
 }
 
-useEffect(()=>{
-     fetchdata();
-     dataforfilter({
-        title:data1||null,
-        style:"Shirt",
-        sort:null,
-        order:null
-       
+const Shirts = () => {
+    const [data, setData] = useState([])
+    const [searchparams, setSearchparams] = useSearchParams()
+    const initialtitle = searchparams.getAll("title")
+    const initialSort=searchparams.getAll("sort")
+    const [title, settitle] = useState(initialtitle || [])
+    const[sort,setSortBy]=useState(initialSort[0]||"")
+    const sortBy=searchparams.get("sort")
+    console.log(sort)
+    useEffect(() => {
+        const wparams = {
+            params: {
+                title: title,
+                _sort:sort&&("discounted_price"),
+                _order:sort,
+                _limit: 20,
+                
+            }
+        }
+        setSearchparams(wparams.params)
+        productdata(setData, wparams)
+    }, [setData,sort, title, setSearchparams])
+
+    const handleCheckbox = (e) => {
+        const newtitle = [...title]
+        if (newtitle.includes(e.target.value)) {
+            newtitle.splice(newtitle.indexOf(e.target.value), 1)
+        } else {
+            newtitle.push(e.target.value)
+        }
+        settitle(newtitle)
     }
-     )
-     .then((res)=>setFildata(res.data))
-},[])
-
-
-
-
-function titlechange(elem){
-    setData1([...data1,elem])
-    fetchdata([...data1,elem])
-    
-}
-let order;
-function sorthtl(){
-      fetchdata=(data1)=>{
-        productdata({
-            title:data1||null,
-            style:"Shirt",
-            sort:"discounted_price",
-            order:"desc"
-            
-        })
-        .then((res)=>setData(res.data))
+    // console.log(title)
+    const handlesort = (e) => {
+        setSortBy(e.target.value)
     }
-    fetchdata()
-}
 
-function sortlth(){
-    fetchdata=(data1)=>{
-        productdata({
-            title:data1||null,
-            style:"Shirt",
-            sort:"discounted_price",
-            order:"asc"
-            
-        })
-        .then((res)=>setData(res.data))
-    }
-    fetchdata()
-}
-function sortpop(){
-    fetchdata=(data1)=>{
-        productdata({
-            title:data1||null,
-            style:"Shirt",
-            sort:"rating_count",
-            order:"desc"
-            
-        })
-        .then((res)=>setData(res.data))
-    }
-    fetchdata()
-}
-
-
-
-    return(
+    return (
         <div>
-            <Grid
-                templateAreas={`"leacher leacher leacher header"
-                                "nav main main main "
-                                "nav footer footer footer "`}
-                gridTemplateRows={'50px 1fr 30px'}
-                gridTemplateColumns={'260px 1fr'}
-                 h='200px'
-                gap='1'
-                color='blackAlpha.700'
-                fontWeight='bold'
->
-                <GridItem  area={'header'}  style={{ border:"1px solid grey",marginTop:"10px",marginRight:"80px"}} >
-                   
-                <Menu isLazy>
-           {/* sort by:  */}
-           <MenuButton><Box  width='260px' >Sort by :{order}</Box></MenuButton>
-                <MenuList>
-           <MenuItem onClick={()=>sorthtl()} value='htl'>High to low</MenuItem>
-           <MenuItem onClick={()=>sortlth()} value='lth'>Low to high</MenuItem>
-           <MenuItem onClick={()=>sortpop()} value="Pop">Popularity</MenuItem>
-         </MenuList>
-         </Menu>     
-         
-                    
-                </GridItem>
-                <GridItem pl='2'  area={'nav'}>
-                    <Box  height={'300px'} overflow="scroll" >
-                        Brand
-                        <Stack spacing={[1, 5]} direction={['column']}>
-                        {
-                            fildata.map((el)=>
-                            <Checkbox key={el.id} onChange={()=>titlechange(el.title)} value={el.title}>{el.title}</Checkbox>
-                            )
-                        }
-                        </Stack>
-                        
-                        </Box>
-                    <Box  height={'300px'}>Price</Box>
-                    {/* <Box  height={'300px'}>Color</Box>
-                    <Box  height={'300px'}>Discount Range</Box> */}
-                </GridItem>
-                <GridItem pl='2'  area={'main'}>
-                <Grid templateColumns='repeat(4, 1fr)' style={{marginLeft:"40px"}} gap={'30px'} >
-                {
-                    data.map((item)=>
-                    <div key={item.id} style={{width:""}}>
-                        <img src={item.images[0]} alt="" />
-                        <div>
-                        <h1 style={{color:"black"}}>{item.title}</h1>
-                        <p>{item.subtitle}</p>
-                        <div style={{display:"flex",fontWeight:"500"}}>
-                        <p style={{color:"#0C0B0B"}}>Rs:{item.discounted_price}</p>
-                        <p style={{marginLeft:"10px",fontWeight:"400",textDecoration:"line-through"}}>Rs:{item.strike_price}</p>
-                        <p style={{marginLeft:"10px",fontWeight:"600",color:"green"}}>Rs:{item.discount}</p>
-                        </div>
-                        </div>
-                        <Button
-                        style={{width:"65%",borderRadius:"0"}}
-                        colorScheme="grey"
-                        variant="outline"
-                        disabled={itemalreadyexist(item,state)}
-                        onClick={()=>dispatch(addtowish(item))}
-                        ><Icon as={AiOutlineHeart} w={6} h={6} />Wishlist</Button>
-                    </div>)
-                }
-            </Grid>
-                 
-                </GridItem>
-                <GridItem pl='2' bg='blue.300' area={'footer'}>
-                    Footer
-                </GridItem>
-                </Grid>
-            
-            
+            <div className='sorting'></div>
+            <div className='flexbox'>
+              <div className="leftsidebox">
+              <div className='wfilter' style={{width:"100%"}}>
+                    <h2>Filter By Brand</h2>
+                    <br />
+                    <div>
+                        <input type="checkbox" value="Roadster"
+                            onChange={handleCheckbox}
+                            checked={title.includes("Roadster")}
+                        />
+                        <label >Roadster</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" value="HIGHLANDER"
+                            onChange={handleCheckbox}
+                            checked={title.includes("HIGHLANDER")}
+                        />
+                        <label >HIGHLANDER</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" value="LOCOMOTIVE"
+                            onChange={handleCheckbox}
+                            checked={title.includes("LOCOMOTIVE")}
+                        />
+                        <label>Locomotive</label>
+                    </div>
+                </div>
+                <div className="sortingbox">
+                    <h2>Sorting</h2>
+                    <div onChange={handlesort}>
+                        <input type="radio" name="sortBy" value={'asc'}
+                        defaultChecked={sort==="asc"}
+                        />
+                        <label>Ascending</label>
+                        <br />
+                    </div>
+                    <div onChange={handlesort}>
+                        <input type="radio" name="sortBy" value={'desc'}
+                        defaultChecked={sort==="desc"}
+                        />
+                        <label>Decending</label>
+                        <br />
+                    </div>
+                </div>
+              </div>
+                <div className='wproducts'>
+                    {
+                        data.length > 0 &&
+                        data.map((item) => {
+                            if (item.images !== "") {
+                                return (<Clothcard key={item.id} {...item} />)
+                            }
+                        })
+                    }
+                </div>
+            </div>
         </div>
     )
 

@@ -16,7 +16,6 @@ root.render(
     <ChakraProvider>
       <Provider store={store}>
       <BrowserRouter>
-        
           <CartContextProvider>
             <CheckoutContextProvider>
               <App />
