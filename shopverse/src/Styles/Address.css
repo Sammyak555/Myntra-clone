@@ -1,0 +1,40 @@
+.container{
+    width: 100%;
+    height: 81px;
+    display: grid;
+}
+.upperbox{
+  display:flex;
+}
+.upperboxleft{
+    width:850px;
+    height:fit-content
+}
+.upperoffers{
+    border:1px solid grey;
+    border-radius:6px ;
+    margin-top:30px;
+    margin:auto;
+    width:auto;
+    margin-top:5px;
+    height:fit-content
+}
+.leftside{
+    width: 100%;
+ 
+}
+.AddressBoxbig{
+    width: 400px;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+
+
+}
+
+
+@media only screen and (max-width: 420px) {
+
+}

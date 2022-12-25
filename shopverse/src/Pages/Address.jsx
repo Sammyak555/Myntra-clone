@@ -11,7 +11,7 @@ import AddressForm from '../Components/CheckoutComps/AddressForm'
 import "../Pages/Checkout/Checkout.css"
 import AddressCard from '../Components/CheckoutComps/AddressCard'
 import Payment from '../Components/CheckoutComps/Payment'
-
+import  '../Styles/Address.css'
 
 
 
@@ -68,10 +68,10 @@ console.log(style)
         <Center>
         <div style={{}}>
 
-        <div style={{display:"flex"}}>
-            <div style={{width:"600px",height:"800px"}}>
-                <div style={{border:"1px solid grey", borderRadius:"6px" ,width:"600px",height:"150px",marginBottom:"30px",marginTop:"20px"}}>
-                <div style={{ margin:"auto",width:"580px",marginTop:"5px",height:"140px"}}>
+        <div className="upperbox" >
+            <div className="upperboxleft" >
+              <div >
+                <div className="upperoffers" >
                     <div style={{display:"flex"}}>
                     <Icon  as={CiDiscount1} w={7} h={7}/>
                     <Text fontWeight={"600"} fontSize='xl'>Bank Offers</Text>
@@ -79,47 +79,12 @@ console.log(style)
                     <div>
                         <p>⚪5% Unlimited Cashback on Flipkart Axis Bank Credit Card. TCA</p>
                         <p>⚪5% Cashback on Paytm Postpaid transactions on a min spend of Rs 1,500. TCA</p>
-                       
                         <span>⚪10% Cashback upto Rs 150 on Freecharge Paylater transaction. TCA</span>
-                       
                         <p>⚪5% Cashback upto Rs 75 on a minimum spend of Rs 1,500 with PayZapp. TCA</p>
-                        
                     </div>
                 </div>
-                </div>
+              </div>
                 <div >
-                  <h1 style={{fontWeight:"500"}} >CHOOSE PAYMENT METHOD</h1>
-
-
-                  {/* <div className='leftside'>
-                    <div className={style||ns} onClick={changeStyle}>
-                        {/* <div className='addresscard'>
-                            
-                        </div> */}
-
-                    {/*  <Wrap justify='space-between'>
-                            {
-                                style === "AddressBoxbig" &&
-                                <WrapItem>
-                                    <Center >
-                                        {
-                                            AllAddress.length>0 &&
-                                            AllAddress.map((item) => {
-                                                return (<AddressCard key={item.id} cardclick={cardclick} {...item} setStyle={setStyle} />)
-                                            })
-                                        }
-                                    </Center>
-                                </WrapItem>
-                            }
-                            <WrapItem justifyContent={'center'}>
-                                <Center >
-                                    <AddressForm />
-                                </Center>
-                            </WrapItem>
-
-                        </Wrap>
-                    </div>
-                    </div> */}
                   <div className='leftside'>
                     <div className={style||ns} onClick={changeStyle}>
                         {/* <div className='addresscard'>
@@ -148,8 +113,9 @@ console.log(style)
 
                         </Wrap>
                     </div>
-                    
+                    <h1 style={{fontWeight:"500"}} >CHOOSE PAYMENT METHOD</h1>
                     <div className="paymentbox" >
+                    
                         <Payment />
                     </div>
                 </div>
