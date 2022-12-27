@@ -1,5 +1,5 @@
 .flexbox{
-    border: 1px solid red;
+
     margin: auto;
     width: 100%;
     height: auto;
@@ -7,12 +7,14 @@
 }
 .wfilter{
     width: 20%;
-    border: 1px solid blue;
     height: 100%;
 }
 .wproducts{
     width: 75%;
-    border: 1px solid brown;
+    border: 1px solid grey;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4,1fr);

@@ -42,8 +42,7 @@ const Women = () => {
         <div className='sorting'></div>
         <div className='flexbox'>
             <div className='wfilter'>
-            <h2>Filter By Brand</h2>
-            <br />
+            <h2 style={{fontWeight:"500"}}>Filter By Brand</h2>
             <div>
                 <input type="checkbox" value="KALINI"
                 onChange={handleCheckbox}

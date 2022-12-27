@@ -60,8 +60,8 @@ const Shirts = () => {
             <div className='flexbox'>
               <div className="leftsidebox">
               <div className='wfilter' style={{width:"100%"}}>
-                    <h2>Filter By Brand</h2>
-                    <br />
+                    <h2 style={{fontWeight:"500"}}>Filter By Brand</h2>
+                   
                     <div>
                         <input type="checkbox" value="Roadster"
                             onChange={handleCheckbox}
@@ -85,7 +85,8 @@ const Shirts = () => {
                     </div>
                 </div>
                 <div className="sortingbox">
-                    <h2>Sorting</h2>
+                    <h2 style={{fontWeight:"500"}}>Sorting</h2>
+              
                     <div onChange={handlesort}>
                         <input type="radio" name="sortBy" value={'asc'}
                         defaultChecked={sort==="asc"}
@@ -106,7 +107,7 @@ const Shirts = () => {
                     {
                         data.length > 0 &&
                         data.map((item) => {
-                            if (item.images !== "") {
+                            if (item.images !== ""&&item.title!=="HERE&NOW") {
                                 return (<Clothcard key={item.id} {...item} />)
                             }
                         })

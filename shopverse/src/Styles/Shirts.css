@@ -1,5 +1,5 @@
 .flexbox{
-    border: 1px solid red;
+
     margin: auto;
     width: 100%;
     height: auto;
@@ -11,16 +11,16 @@
     height: fit-content;
 }
 .wfilter{
-    border: 1px solid grey;
+    
     height:auto;
 }
-.sortingbox{
-    border: 1px solid blue;
-}
+/* .sortingbox{
+
+} */
 
 .wproducts{
     width: 75%;
-    border: 1px solid brown;
+
     height: 100%;
     display: grid;
     grid-template-columns: repeat(4,1fr);

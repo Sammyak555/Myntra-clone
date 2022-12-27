@@ -17,14 +17,14 @@ const Clothcard = (item) => {
     const{state,dispatch}=useContext(CartContext)
     // console.log(state)
   return (
-    <div className='card'>
+    <div className='cardcloth'>
         <div key={item.id} style={{width:""}}>
                         <img src={item.images[0]} alt="" />
                         <div>
-                        <h1 style={{color:"black"}}>{item.title}</h1>
+                        <h1 >{item.title}</h1>
                         <p>{item.subtitle}</p>
                         <div style={{display:"flex",fontWeight:"500"}}>
-                        <p style={{color:"#0C0B0B"}}>Rs:{item.discounted_price}</p>
+                        <p >Rs:{item.discounted_price}</p>
                         <p style={{marginLeft:"10px",fontWeight:"400",textDecoration:"line-through"}}>Rs:{item.strike_price}</p>
                         <p style={{marginLeft:"10px",fontWeight:"600",color:"green"}}>Rs:{item.discount}</p>
                         </div>
