@@ -1,2 +1,2 @@
-# ossified-celery-3594
+# Myntra Clone Site
 Myntra Clone Site : https://shopversemyntra.netlify.app
