@@ -99,9 +99,10 @@ const Payment = () => {
                               <ModalHeader>Payment Process</ModalHeader>
                               <ModalCloseButton onClick={() => { setVerify(true); setSuccess(''); setNote('');setPininput(''); }} />
                               {verify &&
-                                <ModalBody textAlign={'center'}>
+                                <ModalBody  textAlign={'center'}>
                                   <h1 >Amount Payable : ₹ {total} </h1>
                                   <br />
+                                  <h2>Please use pin as " 1 2 3 4 5 " for transaction</h2>
                                   <Pin length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
 
                                 </ModalBody>
@@ -225,7 +226,8 @@ const Payment = () => {
                                 <ModalBody textAlign={'center'}>
                                   <h1 >Amount Payable : ₹ {total} </h1>
                                   <br />
-                                  <Pin length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
+                                  <h2>Please use pin as " 1 2 3 4 5 " for transaction</h2>
+                                  <Pin  length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
 
                                 </ModalBody>
                               }
@@ -327,7 +329,8 @@ const Payment = () => {
                                 <ModalBody textAlign={'center'}>
                                   <h1 >Amount Payable : ₹ {total} </h1>
                                   <br />
-                                  <Pin length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
+                                  <h2>Please use pin as " 1 2 3 4 5 " for transaction</h2>
+                                  <Pin  length={5} setPininput={setPininput} setNote={setNote} setVerify={setVerify} setSuccess={setSuccess} onclose={onClose} />
 
                                 </ModalBody>
                               }
